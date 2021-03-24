@@ -11,15 +11,10 @@ app.use(express.static("public"))
 
 app.get("/api/timestamp/:date_str?", function (req, res) {
 
-    const {date_str} = req.params.url
+    const {date_str} = req.params;
 
-    let date;
-
-    if(!date) {
-        date = new Date()
-    } else {
-        date = new Date(date_str)
-    }
+    let date = new Date(date_str);
+    
 
     return res.json({
         unix: date.getTime(),
